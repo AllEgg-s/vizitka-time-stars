@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 const address = 'Дядьковская улица, 7, Ярославль, 150006'
-const email = 'info@vremya-zvezd.ru'
+const email = 'Time-of-the-stars@mail.ru'
 </script>
 
 <style scoped>

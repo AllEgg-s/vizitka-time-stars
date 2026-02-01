@@ -4,46 +4,19 @@
       <Breadcrumbs :items="[{ title: 'Главная', to: '/' }, { title: 'Услуги' }]" />
       <h1 class="page__title">Услуги</h1>
 
-      <h2 class="abonementy__subtitle">Стандартные абонементы</h2>
-      <p class="abonementy__section-desc">Секция хоккея «Львы ЦХМ»</p>
       <div class="abonementy__grid">
-        <article class="abonementy-card">
-          <h3 class="abonementy-card__type">Полевой игрок (Стандартный)</h3>
-          <p class="abonementy-card__price">15 000 ₽</p>
-          <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
-        </article>
-        <article class="abonementy-card">
-          <h3 class="abonementy-card__type">Вратарь (Стандартный)</h3>
-          <p class="abonementy-card__price">7 500 ₽</p>
-          <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
-        </article>
-      </div>
-
-      <h2 class="abonementy__subtitle">Льготные абонементы</h2>
-      <div class="abonementy__notice">
-        <strong>Внимание!</strong> В случае приобретения льготного абонемента необходимо подтверждение права его использования соответствующими документами по согласованию с руководством «Львы ЦХМ». Льготы предоставляются в индивидуальном порядке на основании условий заключенного «Львы ЦХМ» договора возмездного оказания физкультурно-оздоровительных услуг на проведение занятий по хоккею. В противном случае администрация имеет право отказать Вам в предоставлении услуги по льготному тарифу или предоставить услугу в соответствии со Стандартными тарифами Абонементов.
-      </div>
-      <div class="abonementy__grid">
-        <article class="abonementy-card">
-          <h3 class="abonementy-card__type">Полевой игрок (Льготный)</h3>
-          <p class="abonementy-card__price">13 500 ₽</p>
-          <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
-        </article>
-        <article class="abonementy-card">
-          <h3 class="abonementy-card__type">Вратарь (Льготный)</h3>
-          <p class="abonementy-card__price">6 750 ₽</p>
-          <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
+        <article v-for="(item, i) in services" :key="i" class="abonementy-card">
+          <div class="abonementy-card__media">
+            <img :src="item.image" :alt="item.title" class="abonementy-card__img" />
+          </div>
+          <div class="abonementy-card__body">
+            <h3 class="abonementy-card__type">{{ item.title }}</h3>
+            <p class="abonementy-card__price">{{ item.price }}</p>
+            <p v-if="item.desc" class="abonementy-card__period">{{ item.desc }}</p>
+            <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
+          </div>
         </article>
       </div>
-      <p class="abonementy__note">* льготные абонементы обеспечивают скидку 10% от стоимости стандартного абонемента и предоставляются:</p>
-      <ul class="abonementy__list">
-        <li>многодетным и малоимущим семьям;</li>
-        <li>в случае, если в семье 2 (двое) и более детей занимаются хоккеем в физкультурно-оздоровительных группах «Львы ЦХМ», то таким семьям предоставляется льготный абонемент на второго, третьего и последующих детей.</li>
-      </ul>
 
       <div class="abonementy__blocks">
         <div class="abonementy__block">
@@ -63,6 +36,24 @@
 definePageMeta({
   layout: 'default'
 })
+
+const shopImages = [
+  '/shop/_twVtVDKeoN3qCQ8AlLgTWJR-9q5bV8mf8DJXZ5-yx9k-lA1iryii5q5wQ3G8mw54s95N9k_Kh5kNlEVH4j6AmAp.jpg',
+  '/shop/b-eJHU_jVRGTsdGZKq3NtgV8-_0NnCJabsmuSioIBdmZMAi2b-oOIlaNI_Qp9q_TOuDjyg_PcTfHaRpu2EU36WcG.jpg',
+  '/shop/glcWrrXS8JSFO4wHnFV80Y-7qClgdcrjfH0DZdsLyTJrsfG1UDFeDfGqlPNp4USitpUnsv1ojqEuvadcInoFl5kl.jpg',
+  '/shop/Oeof_tqrSe_uVQUpMuytHbJeA4Dt3ffEHVqBqy3UtrxC3yx_aQEbZHI1EHLejSn234R46fBJdxCaw2w5D5CoXNTC.jpg',
+  '/shop/OpuOGPC8HYB-Acy601CdHzBhNPncsOazsNvB7jx0h565jFN2LdV2OuWcQ0N6iN9qCKrNjTdta3LNAQG2S73QgmNV.jpg',
+  '/shop/ycpRUs57C3dTwqqEVs1JnZ6NHLMIAXISRWcORSL4zcxfqRw4ExBUuYAlICbJ3gXIcvlTw-Vv6gfY0liqQSGSEd1M.jpg'
+]
+
+const services = [
+  { title: 'Абонемент на тренировочные занятия', price: '9 200 ₽', image: shopImages[3] },
+  { title: 'Индивидуально/групповые занятия на хоккейном тренажере HST', price: '4 200 ₽', image: shopImages[4] },
+  { title: 'Бросковая тренировка', price: 'от 600 ₽', desc: 'В зависимости от количества человек', image: shopImages[1] },
+  { title: 'Сборы', price: '40 000 ₽', image: shopImages[2] },
+  { title: 'Летний спортивный лагерь', price: '46 000 ₽', image: shopImages[0] },
+  { title: 'Командная атрибутика', price: '1 400 ₽', image: shopImages[5] }
+]
 </script>
 
 <style scoped>
@@ -73,25 +64,36 @@ definePageMeta({
   font-size: 2rem;
   margin: 0 0 2rem;
 }
-.abonementy__subtitle {
-  font-size: 1.5rem;
-  margin: 2rem 0 0.5rem;
-}
-.abonementy__section-desc {
-  margin: 0 0 1rem;
-  color: var(--color-text-muted);
-}
 .abonementy__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .abonementy-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.abonementy-card__media {
+  aspect-ratio: 16/10;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+.abonementy-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.abonementy-card__body {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .abonementy-card__type {
   font-size: 1.1rem;
@@ -106,26 +108,6 @@ definePageMeta({
   margin: 0 0 1rem;
   font-size: 0.9rem;
   color: var(--color-text-muted);
-}
-.abonementy__notice {
-  background: rgba(234, 179, 8, 0.15);
-  border: 1px solid rgba(234, 179, 8, 0.5);
-  border-radius: var(--radius);
-  padding: 1rem;
-  margin: 1rem 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-.abonementy__note {
-  margin: 1rem 0 0.5rem;
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-}
-.abonementy__list {
-  margin: 0 0 2rem;
-  padding-left: 1.5rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
 }
 .abonementy__blocks {
   display: grid;

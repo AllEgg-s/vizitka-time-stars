@@ -6,7 +6,7 @@
     <ArenaSlider />
     <ReviewsSection />
     <FaqSection />
-    <CoachBlock />
+    <!-- <CoachBlock /> -->
     <!-- <PartnersSection /> -->
     <MapSection />
     <!-- Секция с формой закомментирована (бекенда пока нет)
