@@ -4,21 +4,26 @@
       <Breadcrumbs :items="[{ title: 'Главная', to: '/' }, { title: 'Контакты' }]" />
       <h1 class="page__title">Контакты</h1>
       <div class="kontakty__content">
-        <p><strong>Адрес:</strong> Москва, Митино, Айс Арена ЦХМ</p>
-        <p><strong>Телефон:</strong> <a :href="`tel:${phoneRaw}`">{{ phone }}</a></p>
+        <p><strong>Адрес:</strong> {{ address }}</p>
         <p><strong>E-mail:</strong> <a :href="`mailto:${email}`">{{ email }}</a></p>
       </div>
       <div class="kontakty__map">
-        <div class="media-placeholder">Тут может быть карта</div>
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?ll=39.902303%2C57.583665&z=16&pt=39.902303%2C57.583665"
+          width="100%"
+          height="100%"
+          allowfullscreen
+          title="Карта"
+          class="kontakty__map-iframe"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const phone = '+7 (495) 323-88-87'
-const phoneRaw = '74953238887'
-const email = 'info@hockey-chm.ru'
+const address = 'Дядьковская улица, 7, Ярославль, 150006'
+const email = 'info@vremya-zvezd.ru'
 </script>
 
 <style scoped>
@@ -44,13 +49,14 @@ const email = 'info@hockey-chm.ru'
   margin-top: 2rem;
   aspect-ratio: 16/9;
   max-width: 800px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
+  overflow: hidden;
+  position: relative;
+}
+.kontakty__map-iframe {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  border-radius: inherit;
 }
 </style>

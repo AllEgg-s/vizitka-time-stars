@@ -2,39 +2,29 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__top">
-        <NuxtLink to="/" class="footer__logo">ЦХМ</NuxtLink>
+        <NuxtLink to="/" class="footer__logo">Время Звезд</NuxtLink>
         <div class="footer__contacts">
-          <a :href="`tel:${phoneRaw}`" class="footer__phone">{{ phone }}</a>
-          <span class="footer__hours">{{ hours }}</span>
           <span class="footer__address">{{ address }}</span>
           <a :href="`mailto:${email}`" class="footer__email">{{ email }}</a>
         </div>
         <nav class="footer__nav">
-          <NuxtLink to="/hokkeynaya-shkola">Хоккейная школа</NuxtLink>
-          <NuxtLink to="/abonementy">Абонементы</NuxtLink>
-          <NuxtLink to="/arenda">Аренда</NuxtLink>
+          <NuxtLink to="/hokkeynaya-shkola">Сведения об образовательной организации</NuxtLink>
+          <NuxtLink to="/abonementy">Услуги</NuxtLink>
           <NuxtLink to="/individualnye-trenirovki">Индивидуальные тренировки</NuxtLink>
           <NuxtLink to="/trenery">Тренеры</NuxtLink>
           <NuxtLink to="/kontakty">Контакты</NuxtLink>
         </nav>
       </div>
       <div class="footer__bottom">
-        <span class="footer__copy">© 2026, Центр хоккейного мастерства</span>
-        <span class="footer__legal">
-          <a href="#">Договор-оферта</a>
-          <a href="#">Политика конфиденциальности</a>
-        </span>
+        <span class="footer__copy">© 2026, Время Звезд</span>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-const phone = '+7 (495) 323-88-87'
-const phoneRaw = '74953238887'
-const hours = 'Ежедневно с 6:00 до 24:00'
-const address = 'Москва, Митино, Айс Арена ЦХМ'
-const email = 'info@hockey-chm.ru'
+const address = 'Дядьковская улица, 7, Ярославль, 150006'
+const email = 'info@vremya-zvezd.ru'
 </script>
 
 <style scoped>
@@ -67,13 +57,11 @@ const email = 'info@hockey-chm.ru'
   flex-direction: column;
   gap: 0.5rem;
 }
-.footer__phone,
 .footer__email {
   color: #fff;
   text-decoration: none;
 }
-.footer__email:hover,
-.footer__phone:hover {
+.footer__email:hover {
   text-decoration: underline;
 }
 .footer__nav {
@@ -96,14 +84,6 @@ const email = 'info@hockey-chm.ru'
   gap: 1rem;
   padding-top: 1rem;
   font-size: 0.875rem;
-}
-.footer__legal a {
-  color: #888;
-  text-decoration: none;
-  margin-left: 1rem;
-}
-.footer__legal a:hover {
-  color: #fff;
 }
 @media (max-width: 768px) {
   .footer__top {

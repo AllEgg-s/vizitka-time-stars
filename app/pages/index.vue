@@ -7,8 +7,9 @@
     <ReviewsSection />
     <FaqSection />
     <CoachBlock />
-    <PartnersSection />
+    <!-- <PartnersSection /> -->
     <MapSection />
+    <!-- Секция с формой закомментирована (бекенда пока нет)
     <section class="contact-form section">
       <div class="container">
         <h2 class="section-title">Остались вопросы?</h2>
@@ -16,6 +17,7 @@
         <LeadForm />
       </div>
     </section>
+    -->
   </div>
 </template>
 

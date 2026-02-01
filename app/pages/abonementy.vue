@@ -1,8 +1,8 @@
 <template>
   <div class="page abonementy-page">
     <div class="container">
-      <Breadcrumbs :items="[{ title: 'Хоккейная школа', to: '/' }, { title: 'Абонементы' }]" />
-      <h1 class="page__title">Абонементы</h1>
+      <Breadcrumbs :items="[{ title: 'Главная', to: '/' }, { title: 'Услуги' }]" />
+      <h1 class="page__title">Услуги</h1>
 
       <h2 class="abonementy__subtitle">Стандартные абонементы</h2>
       <p class="abonementy__section-desc">Секция хоккея «Львы ЦХМ»</p>
@@ -11,13 +11,13 @@
           <h3 class="abonementy-card__type">Полевой игрок (Стандартный)</h3>
           <p class="abonementy-card__price">15 000 ₽</p>
           <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <button type="button" class="btn" @click="() => {}">Купить онлайн</button>
+          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
         </article>
         <article class="abonementy-card">
           <h3 class="abonementy-card__type">Вратарь (Стандартный)</h3>
           <p class="abonementy-card__price">7 500 ₽</p>
           <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <button type="button" class="btn" @click="() => {}">Купить онлайн</button>
+          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
         </article>
       </div>
 
@@ -30,13 +30,13 @@
           <h3 class="abonementy-card__type">Полевой игрок (Льготный)</h3>
           <p class="abonementy-card__price">13 500 ₽</p>
           <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <button type="button" class="btn" @click="() => {}">Купить онлайн</button>
+          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
         </article>
         <article class="abonementy-card">
           <h3 class="abonementy-card__type">Вратарь (Льготный)</h3>
           <p class="abonementy-card__price">6 750 ₽</p>
           <p class="abonementy-card__period">Абонемент на 1 месяц</p>
-          <button type="button" class="btn" @click="() => {}">Купить онлайн</button>
+          <a href="https://vk.ru/market-125696800?screen=group" target="_blank" rel="noopener" class="btn">Купить</a>
         </article>
       </div>
       <p class="abonementy__note">* льготные абонементы обеспечивают скидку 10% от стоимости стандартного абонемента и предоставляются:</p>

@@ -1,7 +1,7 @@
 <template>
   <section class="arena section">
     <div class="container">
-      <h2 class="section-title">Арена ЦХМ</h2>
+      <h2 class="section-title">Арена ГУОР</h2>
       <ClientOnly>
         <Swiper
           :effect="'cards'"
@@ -9,8 +9,8 @@
           :modules="modules"
           class="arena-swiper"
         >
-          <SwiperSlide v-for="i in 9" :key="i">
-            <div class="arena__placeholder">Тут может быть картинка</div>
+          <SwiperSlide v-for="(img, i) in guorImages" :key="i">
+            <img :src="img" :alt="`Арена ГУОР ${i + 1}`" class="arena__img" />
           </SwiperSlide>
         </Swiper>
       </ClientOnly>
@@ -25,6 +25,17 @@ import 'swiper/css'
 import 'swiper/css/effect-cards'
 
 const modules = [EffectCards]
+
+const guorImages = [
+  '/guor/photo_2026-02-01_13-16-32.jpg',
+  '/guor/photo_2026-02-01_13-17-22.jpg',
+  '/guor/photo_2026-02-01_13-17-26.jpg',
+  '/guor/photo_2026-02-01_13-17-29.jpg',
+  '/guor/photo_2026-02-01_13-17-33.jpg',
+  '/guor/photo_2026-02-01_13-17-37.jpg',
+  '/guor/photo_2026-02-01_13-17-41.jpg',
+  '/guor/photo_2026-02-01_13-17-45.jpg'
+]
 </script>
 
 <style scoped>
@@ -42,13 +53,13 @@ const modules = [EffectCards]
   background: var(--color-surface);
   border: 1px solid var(--color-border);
 }
-.arena__placeholder {
+.arena__img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.arena-swiper :deep(.swiper-slide) {
   aspect-ratio: 16/10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
 }
 </style>

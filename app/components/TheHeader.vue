@@ -1,13 +1,10 @@
 <template>
     <header class="header">
         <div class="header__top">
-            <NuxtLink to="/" class="header__logo">ЦХМ</NuxtLink>
-            <div class="header__contacts">
-                <a :href="`tel:${phoneRaw}`" class="header__phone">{{
-                    phone
-                }}</a>
-                <span class="header__hours">{{ hours }}</span>
-            </div>
+            <NuxtLink to="/" class="header__logo">
+                <img src="/logo-star-kids.webp" alt="" class="header__logo-img" />
+                <span>Время Звезд</span>
+            </NuxtLink>
         </div>
         <div class="header__divider"></div>
         <div class="header__nav-row">
@@ -26,48 +23,34 @@
                     to="/hokkeynaya-shkola"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Хоккейная школа</NuxtLink
-                >
+                    >Сведения об образовательной организации</NuxtLink>
                 <NuxtLink
                     to="/abonementy"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Абонементы</NuxtLink
-                >
-                <NuxtLink
-                    to="/arenda"
-                    class="header__link"
-                    @click="menuOpen = false"
-                    >Аренда</NuxtLink
-                >
+                    >Услуги</NuxtLink>
                 <NuxtLink
                     to="/individualnye-trenirovki"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Индивидуальные тренировки</NuxtLink
-                >
+                    >Индивидуальные тренировки</NuxtLink>
                 <NuxtLink
                     to="/trenery"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Тренеры</NuxtLink
-                >
+                    >Тренеры</NuxtLink>
                 <NuxtLink
                     to="/kontakty"
                     class="header__link"
                     @click="menuOpen = false"
-                    >Контакты</NuxtLink
-                </NuxtLink>
+                    >Контакты</NuxtLink>
             </nav>
         </div>
     </header>
 </template>
 
 <script setup lang="ts">
-const phone = '+7 (495) 323-88-87'
-const phoneRaw = '74953238887'
-const hours = 'Ежедневно, с 06:00 до 24:00'
-
+import { ref } from 'vue'
 const menuOpen = ref(false)
 </script>
 
@@ -90,6 +73,9 @@ const menuOpen = ref(false)
 }
 
 .header__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     font-weight: 700;
     font-size: 1.5rem;
     color: #fff;
@@ -101,28 +87,10 @@ const menuOpen = ref(false)
     color: #ccc;
 }
 
-.header__contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.25rem;
-    text-align: right;
-    flex-shrink: 0;
-}
-
-.header__phone {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.header__phone:hover {
-    text-decoration: underline;
-}
-
-.header__hours {
-    font-size: 0.875rem;
-    color: #aaa;
+.header__logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
 }
 
 .header__divider {

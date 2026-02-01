@@ -2,10 +2,10 @@
   <section class="lions section">
     <div class="container lions__inner">
       <div class="lions__title-wrap">
-        <h2 class="lions__title">Львы ЦХМ приглашают на просмотр!</h2>
+        <h2 class="lions__title">Время Звезд приглашает на просмотр!</h2>
       </div>
       <div class="lions__media">
-        <div class="media-placeholder">Тут может быть картинка</div>
+        <img src="/logo-star-kids.webp" alt="Время Звезд" class="lions__logo" />
       </div>
       <div class="lions__content">
         <p class="lions__text">Идет набор игроков 2017 г.р.</p>
@@ -41,16 +41,17 @@
 .lions__media {
   width: 140px;
   aspect-ratio: 1;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-muted);
-  font-size: 0.75rem;
-  text-align: center;
-  padding: 0.5rem;
+  overflow: hidden;
+}
+.lions__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .lions__content {
   min-width: 0;
@@ -58,9 +59,10 @@
 }
 .lions__text {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--color-text-muted);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-text);
 }
 .lions__action {
   grid-column: 1 / -1;

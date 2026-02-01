@@ -1,9 +1,7 @@
 <template>
   <section class="hero">
     <div class="hero__inner container">
-      <h1 class="hero__title">Стань частью команды!</h1>
-      <LeadForm />
-      <p class="hero__disclaimer">Заполняя и отправляя форму, Вы даете Согласие на обработку персональных данных</p>
+      <h1 class="hero__title">Стань частью нашей команды!</h1>
     </div>
   </section>
 </template>
@@ -22,13 +20,8 @@
 }
 .hero__title {
   font-size: 2.5rem;
-  margin: 0 0 1.5rem;
+  margin: 0;
   line-height: 1.2;
-}
-.hero__disclaimer {
-  margin: 1rem 0 0;
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
 }
 @media (max-width: 600px) {
   .hero__title {

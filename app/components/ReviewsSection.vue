@@ -1,49 +1,37 @@
 <template>
-  <section class="reviews section">
+  <section class="news section">
     <div class="container">
-      <h2 class="section-title">Отзывы о нас</h2>
+      <h2 class="section-title">Новости</h2>
       <ClientOnly>
-        <div class="reviews__slider-wrap">
+        <div class="news__slider-wrap">
           <Swiper
             :modules="modules"
-            :navigation="{ nextEl: '.reviews__next', prevEl: '.reviews__prev' }"
-            class="reviews-swiper"
+            :navigation="{ nextEl: '.news__next', prevEl: '.news__prev' }"
+            class="news-swiper"
           >
-            <SwiperSlide v-for="(r, i) in reviews" :key="i">
-              <article class="review-card">
-                <div class="review-card__avatar">
-                  <span>Тут должна быть картинка</span>
+            <SwiperSlide v-for="(item, i) in newsItems" :key="i">
+              <article class="news-card">
+                <div class="news-card__media">
+                  <div class="media-placeholder">Тут может быть картинка</div>
                 </div>
-                <div class="review-card__body">
-                  <h3 class="review-card__author">{{ r.author }}</h3>
-                  <p class="review-card__text">{{ r.text }}</p>
+                <div class="news-card__body">
+                  <p class="news-card__text">{{ item.excerpt }}</p>
+                  <NuxtLink :to="item.url" class="btn btn--small">Подробнее</NuxtLink>
                 </div>
               </article>
             </SwiperSlide>
           </Swiper>
-          <div class="reviews__nav">
-            <button type="button" class="reviews__btn reviews__prev" aria-label="Назад">‹</button>
-            <button type="button" class="reviews__btn reviews__next" aria-label="Вперед">›</button>
+          <div class="news__nav">
+            <button type="button" class="news__btn news__prev" aria-label="Назад">‹</button>
+            <button type="button" class="news__btn news__next" aria-label="Вперед">›</button>
           </div>
         </div>
       </ClientOnly>
-      <div class="reviews__action">
-        <button type="button" class="btn" @click="showReviewForm = true">Отправить Ваш отзыв</button>
-      </div>
-      <div v-if="showReviewForm" class="reviews__modal">
-        <div class="reviews__modal-inner">
-          <h3>Отправить отзыв</h3>
-          <LeadForm @success="showReviewForm = false; reviewSent = true" />
-          <button type="button" class="btn btn--secondary" @click="showReviewForm = false">Закрыть</button>
-        </div>
-      </div>
-      <p v-if="reviewSent" class="reviews__sent">Спасибо! Отзыв отправлен на модерацию и будет опубликован после проверки.</p>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper/modules'
 import 'swiper/css'
@@ -51,67 +39,59 @@ import 'swiper/css/navigation'
 
 const modules = [Navigation]
 
-const reviews = [
-  { author: 'Наталья', meta: 'сын Алексей, 9 лет', text: 'Занимаемся второй год у Дмитрия Ивановича, очень довольны результатом. Ребенок болеет хоккеем, стал более рассудительным, спокойным. На занятия спешит, приходит уставший, но очень довольный. От телевизора, когда идет какой-нибудь хоккейный матч теперь не оторвать, смотрит, комментирует что-то, кого-то хвалит, кого-то ругает ))' },
-  { author: 'Елена', meta: 'сын Владимир, 11 лет', text: 'Хоккей стал самой важной частью нашей жизни, теперь мы все дружно в нем разбираемся. Команда для Володи - как вторая семья, тренер - как крестный, наверное. Очень сильная школа, оказывается хоккей - это не только спорт, это целая философия. Уже есть маленькие, но такие важные для нас достижения. Полное взаимопонимание и с тренером, и с командой. Спасибо!' },
-  { author: 'Наталья', meta: 'сын Иван, 5 лет', text: 'Нам всего 5 лет, очень переживали, что не получится. Спасибо тренерам, очень быстро поставили Ваню на коньки. Все терпеливые, внимательные, видно, что любят детей и умеют с ними находить общий язык. Работой центра прям сильно довольны! Тренеры - большие профессионалы! Ребенка стал более уверенным после занятий, полюбил хоккей и хочет заниматься дальше!' }
+const newsItems = [
+  { title: 'Открытие сезона', excerpt: 'Приглашаем на открытие сезона 2025/26. Торжественное мероприятие состоится в конце сентября.', url: '#' },
+  { title: 'Набор в группы', excerpt: 'Идёт набор в детские группы по хоккею. Запись на просмотр открыта для детей 2017 г.р. и старше.', url: '#' },
+  { title: 'Тренировки на льду', excerpt: 'Регулярные тренировки на льду Арены ГУОР. Расписание и условия посещения — в разделе Услуги.', url: '#' }
 ]
-const showReviewForm = ref(false)
-const reviewSent = ref(false)
 </script>
 
 <style scoped>
-.reviews__slider-wrap {
+.news__slider-wrap {
   position: relative;
 }
-.reviews-swiper {
+.news-swiper {
   padding-bottom: 0.5rem;
 }
-.review-card {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.5rem;
-  align-items: start;
+.news-card {
   background: var(--color-surface);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  overflow: hidden;
   border: 1px solid var(--color-border);
-  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
 }
-.review-card__avatar {
-  width: 80px;
-  height: 80px;
-  flex-shrink: 0;
-  border-radius: 50%;
+.news-card__media {
+  aspect-ratio: 16/10;
   background: #252540;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
   color: var(--color-text-muted);
-  text-align: center;
-  padding: 0.5rem;
+  font-size: 0.85rem;
 }
-.review-card__body {
-  min-width: 0;
+.news-card__body {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-.review-card__author {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-}
-.review-card__text {
+.news-card__text {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--color-text-muted);
+  flex: 1;
 }
-.reviews__nav {
+.news__nav {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
 }
-.reviews__btn {
+.news__btn {
   width: 44px;
   height: 44px;
   display: flex;
@@ -125,44 +105,16 @@ const reviewSent = ref(false)
   font-size: 1.5rem;
   line-height: 1;
 }
-.reviews__btn:hover:not(:disabled) {
+.news__btn:hover:not(:disabled) {
   background: var(--color-border);
 }
-.reviews__btn.swiper-button-disabled {
+.news__btn.swiper-button-disabled {
   opacity: 0.4;
   cursor: default;
 }
-.reviews__action {
-  text-align: center;
-  margin-top: 2rem;
-}
-.reviews__modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-  padding: 1rem;
-}
-.reviews__modal-inner {
-  background: var(--color-surface);
-  padding: 2rem;
-  border-radius: var(--radius);
-  max-width: 420px;
-  width: 100%;
-}
-.reviews__modal-inner h3 {
-  margin: 0 0 1rem;
-}
-.reviews__sent {
-  text-align: center;
-  color: #22c55e;
-  margin-top: 1rem;
-}
-.btn--secondary {
-  background: var(--color-border);
-  margin-top: 1rem;
+.btn--small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  align-self: flex-start;
 }
 </style>
