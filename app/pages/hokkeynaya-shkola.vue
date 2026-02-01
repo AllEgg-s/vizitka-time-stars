@@ -8,6 +8,46 @@
                 ]"
             />
             <h1 class="page__title">Сведения об образовательной организации</h1>
+
+            <section class="school__main-info">
+                <h2 class="school__subtitle">Основные сведения</h2>
+                <dl class="school__info-list">
+                    <dt>Полное и сокращенное наименование</dt>
+                    <dd>Время Звезд (Время Звезд)</dd>
+
+                    <dt>Дата создания</dt>
+                    <dd>2014 г.</dd>
+
+                    <dt>Учредители / Члены организации</dt>
+                    <dd>
+                        <ul class="school__info-sublist">
+                            <li>Уточняется</li>
+                        </ul>
+                    </dd>
+
+                    <dt>Место нахождения</dt>
+                    <dd>
+                        Российская Федерация, Ярославская область, город
+                        Ярославль, Дядьковская улица, 7, 150006.
+                    </dd>
+
+                    <dt>Режим и график работы</dt>
+                    <dd>понедельник — пятница с 09:00 до 18:00</dd>
+
+                    <dt>Контактные телефоны</dt>
+                    <dd>Уточняется</dd>
+
+                    <dt>Адрес электронной почты</dt>
+                    <dd>
+                        <a
+                            href="mailto:Time-of-the-stars@mail.ru"
+                            class="school__info-link"
+                            >Time-of-the-stars@mail.ru</a
+                        >
+                    </dd>
+                </dl>
+            </section>
+
             <div class="school__intro">
                 <p>
                     <strong>Время Звезд</strong> создан в 2014 году для
@@ -140,6 +180,40 @@ const docs = [
 .school__subtitle {
     font-size: 1.25rem;
     margin: 0 0 1rem;
+}
+.school__main-info {
+    margin-bottom: 2rem;
+}
+.school__info-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+.school__info-list dt {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+}
+.school__info-list dt:first-child {
+    margin-top: 0;
+}
+.school__info-list dd {
+    margin: 0;
+    padding-left: 0;
+}
+.school__info-sublist {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+.school__info-link {
+    color: var(--color-primary, #2563eb);
+    text-decoration: none;
+}
+.school__info-link:hover {
+    text-decoration: underline;
 }
 .school__conditions {
     margin: 0 0 2rem;
